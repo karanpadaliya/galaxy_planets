@@ -40,7 +40,4 @@ The application employs a variety of animation techniques to enhance the user ex
 - **Planet Details Page**: Each planet's detail page features comprehensive information and is enriched with animations, making the content engaging and easy to follow.
 - **User Experience**: The combination of beautiful UI and seamless animations provides an exceptional user experience, making exploration both informative and visually pleasing.
 
-
-## To check the proper animation kindly see the full video with a concentration and see the proper video To know about how animation working in my application So kindly see video fully and with concentration please its a humble request to check the full animation in my application.
-
 **Thank you have a nice day keep supporting.**
