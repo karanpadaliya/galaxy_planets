@@ -41,7 +41,7 @@ class _AllState extends State<All> with TickerProviderStateMixin {
     var dark = Provider.of<AnimatePro>(context, listen: false).isDark;
     var style = TextStyle(
         color: dark ? Colors.black : Colors.white,
-        fontWeight: FontWeight.w700,
+        fontWeight: FontWeight.w500,
         fontSize: 17);
     return Column(
       children: [
@@ -80,9 +80,7 @@ class _AllState extends State<All> with TickerProviderStateMixin {
                                     margin:
                                         EdgeInsets.symmetric(horizontal: 10),
                                     decoration: BoxDecoration(
-                                      color: dark
-                                          ? Colors.blue.withOpacity(0.2)
-                                          : Color(0xff0B1418),
+                                      color: Colors.blue.withOpacity(0.1),
                                       borderRadius: BorderRadius.circular(20),
                                     ),
                                     child: Column(
@@ -154,7 +152,7 @@ class _AllState extends State<All> with TickerProviderStateMixin {
         Align(
           alignment: Alignment(-0.8, 0),
           child: Text(
-            "You May Like Also",
+            "Liked Planets",
             style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.w700,
@@ -165,7 +163,7 @@ class _AllState extends State<All> with TickerProviderStateMixin {
         Consumer<AnimatePro>(
           builder: (BuildContext context, value, Widget? child) {
             return SizedBox(
-              height: MediaQuery.sizeOf(context).height * 0.3,
+              height: 300,
               child: (value.favList.isNotEmpty)
                   ? ListView.builder(
                       itemCount: value.favList.length,
@@ -182,8 +180,7 @@ class _AllState extends State<All> with TickerProviderStateMixin {
                               width: MediaQuery.sizeOf(context).width,
                               margin: EdgeInsets.all(10),
                               decoration: BoxDecoration(
-                                color:
-                                    dark ? Colors.black12 : Color(0xff0B1418),
+                                color: Colors.blue.withOpacity(0.1),
                                 borderRadius: BorderRadius.circular(20),
                               ),
                               child: Column(
@@ -233,7 +230,7 @@ class _AllState extends State<All> with TickerProviderStateMixin {
                     )
                   : Center(
                       child: Text(
-                        "NoT Exploring Planet Yet!!!",
+                        "Not Exploring Planet Yet!!!",
                         style: TextStyle(
                             color: dark ? Colors.black : Colors.white,
                             fontWeight: FontWeight.w700,

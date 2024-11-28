@@ -70,41 +70,31 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
         actions: [
           Consumer<AnimatePro>(
             builder: (BuildContext context, value, Widget? child) {
-              return CircleAvatar(
-                radius: 40,
-                backgroundColor: dark ? Colors.black12 : Color(0xff0B1418),
-                child: Center(
-                  child: IconButton(
-                      onPressed: () {
-                        value.theme();
-                      },
-                      icon: Icon(
-                        (value.isDark)
-                            ? Icons.dark_mode_outlined
-                            : Icons.light_mode_outlined,
-                        size: 30,
-                        color: dark ? Colors.black : Colors.white,
-                      )),
-                ),
+              return Center(
+                child: IconButton(
+                    onPressed: () {
+                      value.theme();
+                    },
+                    icon: Icon(
+                      (value.isDark)
+                          ? Icons.dark_mode_outlined
+                          : Icons.light_mode_outlined,
+                      size: 30,
+                      color: dark ? Colors.black : Colors.white,
+                    )),
               );
             },
           ),
-          CircleAvatar(
-            radius: 40,
-            backgroundColor: dark ? Colors.black12 : Color(0xff0B1418),
-            child: Center(
-              child: Hero(
-                tag: "mylike",
-                child: IconButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, "LikePage");
-                  },
-                  icon: Icon(
-                    Icons.favorite,
-                    size: 30,
-                    color: Colors.red,
-                  ),
-                ),
+          Hero(
+            tag: "mylike",
+            child: IconButton(
+              onPressed: () {
+                Navigator.pushNamed(context, "LikePage");
+              },
+              icon: Icon(
+                Icons.favorite,
+                size: 30,
+                color: Colors.red,
               ),
             ),
           ),

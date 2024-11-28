@@ -54,7 +54,7 @@ class _DetailPageState extends State<DetailPage> with TickerProviderStateMixin {
 
     var dark= Provider.of<AnimatePro>(context,listen: false).isDark;
     var style = TextStyle(
-        color: dark?Colors.black:Colors.white, fontWeight: FontWeight.w700, fontSize: 17);
+        color: dark?Colors.black:Colors.white, fontWeight: FontWeight.w700, fontSize: 15);
     return Scaffold(
       backgroundColor:  dark?Colors.white: Colors.black,
       appBar: AppBar(
@@ -76,44 +76,73 @@ class _DetailPageState extends State<DetailPage> with TickerProviderStateMixin {
             ),
           ),
         ),
+        actions: [
+          Consumer<AnimatePro>(
+            builder: (BuildContext context, value, Widget? child) {
+              return IconButton(
+                  onPressed: () {
+                    value.addFavList(pp!);
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      duration: Duration(seconds: 2),
+                      content: Center(
+                        child: Text(
+                          "Like Planet Successfully",
+                          style: style,
+                        ),
+                      ),
+                      backgroundColor: Colors.green,
+                    ));
+                  },
+                  icon: Icon(
+                    Icons.favorite_border,
+                    size: 30,
+                    color: dark?Colors.black:Colors.white,
+                  ));
+            },
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
-            Center(
-              child: Consumer<AnimatePro>(
-                builder: (BuildContext context, value, Widget? child) {
-                  return AnimatedBuilder(
-                      animation: animationController,
-                      builder: (BuildContext context, Widget? child) {
-                        return Transform.rotate(
-                          angle: animationController.value,
-                          child: child,
-                        );
-                      },
-                      child: Hero(tag: "index",
-                      child: Image.asset(pp?.image ?? "")));
-                },
-              ),
+            Consumer<AnimatePro>(
+              builder: (BuildContext context, value, Widget? child) {
+                return AnimatedBuilder(
+                    animation: animationController,
+                    builder: (BuildContext context, Widget? child) {
+                      return Transform.rotate(
+                        angle: animationController.value,
+                        child: child,
+                      );
+                    },
+                    child: Hero(tag: "index",
+                    child: Image.asset(pp?.image ?? "")));
+              },
             ),
             SizedBox(
               height: 30,
             ),
-            Text(
-              (pp?.name ?? "").toUpperCase(),
-              style: TextStyle(
-                color: dark?Colors.black:Colors.white,
-                fontSize: 30,
-                fontWeight: FontWeight.w700,
+            Padding(
+              padding: const EdgeInsets.only(left: 10),
+              child: Text(
+                (pp?.name ?? "").toUpperCase(),
+                style: TextStyle(
+                  color: dark?Colors.black:Colors.white,
+                  fontSize: 25,
+                  fontWeight: FontWeight.w700,
+                ),
               ),
             ),
-            Text(
-              (pp?.spe ?? "").toUpperCase(),
-              style: TextStyle(
-                color: dark?Colors.black:Colors.white,
-                fontSize: 30,
-                fontWeight: FontWeight.w700,
+            Padding(
+              padding: const EdgeInsets.only(left: 10),
+              child: Text(
+                (pp?.spe ?? "").toUpperCase(),
+                style: TextStyle(
+                  color: dark?Colors.black:Colors.white,
+                  fontSize: 18,
+                ),
               ),
             ),
             SizedBox(
@@ -126,33 +155,8 @@ class _DetailPageState extends State<DetailPage> with TickerProviderStateMixin {
                   "Encyclopedia",
                   style: TextStyle(
                       color: dark?Colors.black:Colors.white,
-                      fontWeight: FontWeight.w700,
+                      fontWeight: FontWeight.w500,
                       fontSize: 25),
-                ),
-                Center(
-                  child: Consumer<AnimatePro>(
-                    builder: (BuildContext context, value, Widget? child) {
-                      return IconButton(
-                          onPressed: () {
-                            value.addFavList(pp!);
-                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                              duration: Duration(seconds: 2),
-                              content: Center(
-                                child: Text(
-                                  "Like Planet Successfully",
-                                  style: style,
-                                ),
-                              ),
-                              backgroundColor: Colors.green,
-                            ));
-                          },
-                          icon: Icon(
-                            Icons.favorite_border,
-                            size: 30,
-                            color: dark?Colors.black:Colors.white,
-                          ));
-                    },
-                  ),
                 ),
               ],
             ),
@@ -327,7 +331,7 @@ class _DetailPageState extends State<DetailPage> with TickerProviderStateMixin {
                     style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.w700,
-                        fontSize: 30),
+                        fontSize: 25),
                   )
                 : SizedBox.shrink(),
             Padding(
@@ -345,7 +349,7 @@ class _DetailPageState extends State<DetailPage> with TickerProviderStateMixin {
                     style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.w700,
-                        fontSize: 30),
+                        fontSize: 25),
                   )
                 : SizedBox.shrink(),
             Padding(
@@ -363,7 +367,7 @@ class _DetailPageState extends State<DetailPage> with TickerProviderStateMixin {
                     style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.w700,
-                        fontSize: 30),
+                        fontSize: 25),
                   )
                 : SizedBox.shrink(),
             Padding(
@@ -381,7 +385,7 @@ class _DetailPageState extends State<DetailPage> with TickerProviderStateMixin {
                     style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.w700,
-                        fontSize: 30),
+                        fontSize: 25),
                   )
                 : SizedBox.shrink(),
             Padding(
@@ -399,7 +403,7 @@ class _DetailPageState extends State<DetailPage> with TickerProviderStateMixin {
                     style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.w700,
-                        fontSize: 30),
+                        fontSize: 25),
                   )
                 : SizedBox.shrink(),
             Padding(
@@ -417,7 +421,7 @@ class _DetailPageState extends State<DetailPage> with TickerProviderStateMixin {
                     style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.w700,
-                        fontSize: 30),
+                        fontSize: 25),
                   )
                 : SizedBox.shrink(),
             Padding(
@@ -435,7 +439,7 @@ class _DetailPageState extends State<DetailPage> with TickerProviderStateMixin {
                     style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.w700,
-                        fontSize: 30),
+                        fontSize: 25),
                   )
                 : SizedBox.shrink(),
             Padding(
@@ -453,7 +457,7 @@ class _DetailPageState extends State<DetailPage> with TickerProviderStateMixin {
                     style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.w700,
-                        fontSize: 30),
+                        fontSize: 25),
                   )
                 : SizedBox.shrink(),
             Padding(
@@ -471,7 +475,7 @@ class _DetailPageState extends State<DetailPage> with TickerProviderStateMixin {
                     style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.w700,
-                        fontSize: 30),
+                        fontSize: 25),
                   )
                 : SizedBox.shrink(),
             Padding(
@@ -489,7 +493,7 @@ class _DetailPageState extends State<DetailPage> with TickerProviderStateMixin {
                     style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.w700,
-                        fontSize: 30),
+                        fontSize: 25),
                   )
                 : SizedBox.shrink(),
             Padding(
@@ -507,7 +511,7 @@ class _DetailPageState extends State<DetailPage> with TickerProviderStateMixin {
                     style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.w700,
-                        fontSize: 30),
+                        fontSize: 25),
                   )
                 : SizedBox.shrink(),
             Padding(
@@ -525,7 +529,7 @@ class _DetailPageState extends State<DetailPage> with TickerProviderStateMixin {
                     style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.w700,
-                        fontSize: 30),
+                        fontSize: 25),
                   )
                 : SizedBox.shrink(),
             Padding(
@@ -543,7 +547,7 @@ class _DetailPageState extends State<DetailPage> with TickerProviderStateMixin {
                     style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.w700,
-                        fontSize: 30),
+                        fontSize: 25),
                   )
                 : SizedBox.shrink(),
             Padding(
@@ -561,7 +565,7 @@ class _DetailPageState extends State<DetailPage> with TickerProviderStateMixin {
                     style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.w700,
-                        fontSize: 30),
+                        fontSize: 25),
                   )
                 : SizedBox.shrink(),
             Padding(
@@ -579,7 +583,7 @@ class _DetailPageState extends State<DetailPage> with TickerProviderStateMixin {
                     style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.w700,
-                        fontSize: 30),
+                        fontSize: 25),
                   )
                 : SizedBox.shrink(),
             Padding(
@@ -597,7 +601,7 @@ class _DetailPageState extends State<DetailPage> with TickerProviderStateMixin {
                     style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.w700,
-                        fontSize: 30),
+                        fontSize: 25),
                   )
                 : SizedBox.shrink(),
             Padding(

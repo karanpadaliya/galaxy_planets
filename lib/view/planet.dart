@@ -87,9 +87,9 @@ class _PlanetsState extends State<Planets> with TickerProviderStateMixin {
                                         0.18,
                                     width:
                                         MediaQuery.sizeOf(context).width / 1.6,
-                                    margin: EdgeInsets.symmetric(horizontal: 5),
+                                    margin: EdgeInsets.symmetric(horizontal: 3),
                                     decoration: BoxDecoration(
-                                      color:dark? Colors.black12:Color(0xff0B1418),
+                                      color: Colors.blue.withOpacity(0.1),
                                       borderRadius: BorderRadius.circular(10),
                                     ),
                                     child: Column(
